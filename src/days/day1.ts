@@ -3,20 +3,20 @@ export function day1(input) {
 }
 
 function partOne(input: number[]) {
-  let calories = 0;
+  let totalCalories = 0;
 
-  let sortedCalorieIntake = input
-    .map((food: number) => {
-      calories += Number(food);
+  const sortedCalorieIntake = input
+    .map((calories: number) => {
+      totalCalories += calories;
 
-      if (Number(food) === 0) {
-        const _calories = calories;
-        calories = 0;
-        return _calories;
+      if (calories === 0) {
+        const _totalCalories = totalCalories;
+        totalCalories = 0;
+        return _totalCalories;
       }
       return -1;
     })
-    .filter((number) => number !== -1)
+    .filter((calories) => calories !== -1)
     .sort(function (a, b) {
       return b - a;
     });
