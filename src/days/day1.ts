@@ -1,16 +1,30 @@
 export function day1(input) {
   partOne(input);
-  partTwo(input);
 }
 
-function partOne(input: string[]) {
-  let result = -1;
+function partOne(input: number[]) {
+  let calories = 0;
 
-  console.log(`Result Part 1: ${result}`);
+  let sortedCalorieIntake = input
+    .map((food: number) => {
+      calories += Number(food);
+
+      if (Number(food) === 0) {
+        const _calories = calories;
+        calories = 0;
+        return _calories;
+      }
+      return -1;
+    })
+    .filter((number) => number !== -1)
+    .sort(function (a, b) {
+      return b - a;
+    });
+
+  console.log(`Result Part 1: ${sortedCalorieIntake[0]}`);
+  partTwo(sortedCalorieIntake);
 }
 
-function partTwo(input: string[]) {
-  let result = -1;
-
-  console.log(`Result Part 2: ${result}`);
+function partTwo(input: number[]) {
+  console.log(`Result Part 2: ${input[0] + input[1] + input[2]}`);
 }
